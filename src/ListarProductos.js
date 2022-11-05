@@ -1,6 +1,7 @@
 import React from 'react';
 import Constantes from "./Constantes";
 import { ToastContainer, toast } from 'react-toastify';
+import { Link, Redirect } from 'react-router-dom';
 
 class ListarProductos extends React.Component{
 
@@ -51,7 +52,9 @@ class ListarProductos extends React.Component{
                                       <td>{producto.precio}</td>
                                       <td>{producto.descripcion}</td>
                                       <td>{producto.stock}</td>
-                                   
+                                      <td>
+                                      <Link to={`/productos/editar/${producto._id}`} className="button is-info">Actualizar</Link>
+                                      </td>
                                     </tr>
                                 );
                           

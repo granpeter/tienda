@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-var Producto = require("../modelos/modeloTienda");
+var ProductoModelo = require("../modelos/modeloTienda");// importando el modelo Mongo a Express
 
 // este método atiende la petición de guardar producto
 router.post('/', async function (req, res, next) {
-    const producto = new Producto({
+    const producto = new ProductoModelo({  // representación JSON del producto
     nombre: req.body.nombre,
     precio: req.body.precio,
     descripcion: req.body.descripcion,
@@ -18,9 +18,15 @@ router.post('/', async function (req, res, next) {
 
 // funcion que atiende peticiones get  en el mapeo /productos
 router.get('/', async function (req, res, next) {
-   const productos= await Producto.find(); // metodo para listar todos los productos
+   const productos= await ProductoModelo.find(); // metodo para listar todos los productos
    res.send(productos);
 
+});
+
+// función que me permita buscar el producto a partir de su _id
+router.get('/:id', async function (req, res) {
+  const producto = await ProductoModelo.findById(req.params.id);
+  res.send(producto);
 });
 
 module.exports = router;

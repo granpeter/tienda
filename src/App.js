@@ -4,6 +4,8 @@ import './App.css';
 import { NavLink} from "react-router-dom";
 import AgregarProducto from './AgregarProducto';
 import ListarProductos from './ListarProductos';
+import ActualizarProducto from './ActualizarProducto';
+
 import {
   Switch,
   Route,
@@ -26,6 +28,10 @@ function App() {
             
             <Route path="/productos/listar">
               <ListarProductos></ListarProductos>
+            </Route>
+
+            <Route path="/productos/editar/:id">
+              <ActualizarProducto></ActualizarProducto>
             </Route>
           
            </Switch>
