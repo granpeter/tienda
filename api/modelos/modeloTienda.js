@@ -18,7 +18,11 @@ const Producto = mongoose.model('Producto', {
         type: Number,
         required: true,
     },
-    
+     
+    iva:{
+        type: Number,
+        required: true, 
+    },
 
 });
 module.exports = Producto;

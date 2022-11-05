@@ -63,8 +63,9 @@ class Nav extends React.Component {
                 </div>
                 <div className={`navbar-menu ${this.state.mostrarMenu ? "is-active" : ""}`}>
                     <div className="navbar-start">
-                        <NavLink onClick={this.ocultarMenu} activeClassName="is-active" className="navbar-item" to="/productos/agregar">Agregar Producto</NavLink>
-                        <NavLink onClick={this.ocultarMenu} activeClassName="is-active" className="navbar-item" to="/productos/listar">Listar Productos</NavLink>
+                        <NavLink onClick={this.ocultarMenu} activeClassName="is-active" className="navbar-item" to="/productos/agregar"> Agregar Producto</NavLink>                               
+
+                        <NavLink onClick={this.ocultarMenu} activeClassName="is-active" className="navbar-item" to="/productos/listar">   Listar Productos </NavLink>
                     </div>
                     <div className="navbar-end">
                         <div className="navbar-item">

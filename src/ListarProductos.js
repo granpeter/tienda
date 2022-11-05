@@ -1,36 +1,86 @@
 import React from 'react';
+import Constantes from "./Constantes";
+import { ToastContainer, toast } from 'react-toastify';
 
 class ListarProductos extends React.Component{
 
-    
-
-    render() {
-        return (
-            <div>
-                <div className="column">
-                    <h1 className="is-size-3">Ver Productos </h1>
-                    
-                </div>
-                <div className="table-container">
-                    <table className="table is-fullwidth is-bordered" border="1">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Calificación</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        );
+   constructor (props){
+        super(props);
+          this.state = {
+          productos: [],
+         };
     }
+     
+    // implementar la función que dibuja el componente
+    async componentDidMount() {
+        const respuesta = await fetch("http://localhost:5000/producto"); // si se llama solo la ruta asume petición GET
+        const productosTemp = await respuesta.json();
+        this.setState ({
+            productos:productosTemp,
+
+        });
+
+     }   
+ 
+ //  implementar el render, que es el metodo que dibuja el componente que es una tabla
+
+   render() {
+      return (
+        <div>
+           <div className="column">
+              <h1 className="is-size-3">Ver videojuegos</h1>
+              <ToastContainer></ToastContainer>
+           </div>
+           <div className="table-container">
+            <table className="table is-fullwidth is-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Descripción</th>
+                        <th>Stock </th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                {this.state.productos.map(producto => {
+                                return (
+                                    <tr>
+                                      <td>{producto.nombre}</td>
+                                      <td>{producto.precio}</td>
+                                      <td>{producto.descripcion}</td>
+                                      <td>{producto.stock}</td>
+                                   
+                                    </tr>
+                                );
+                          
+                                
+        
+                            
+                            
+                })}
 
 
-} // FINALIZA COMPONENTE DE CLASE
+                    
+                   
+                </tbody>
+            </table>
+           </div>
+        </div>  
+
+
+
+
+      );
+
+
+  }// fin de metodo render
+
+
+
+
+
+}// Fin de clase
+
 export default ListarProductos;

@@ -14,6 +14,7 @@ class AgregarProducto extends React.Component {
                 "precio": "",
                 "descripcion": "",
                 "stock":"",
+                "iva":"",
             },
         };
 
@@ -50,6 +51,12 @@ class AgregarProducto extends React.Component {
                     <input required placeholder="stock" type="number" id="stock"  className="input"  onChange={this.manejarCambio} value={this.state.producto.stock} />
                 </div>
 
+
+                <div className="form-group">
+                    <label className="label" htmlFor="iva">Iva:</label>
+                    <input required placeholder="iva" type="number" id="iva"  className="input"  onChange={this.manejarCambio} value={this.state.producto.iva} />
+                </div>
+
                 <div className="form-group">
                     <button className="button is-success mt-2">Guardar</button>
                     &nbsp;
@@ -70,8 +77,7 @@ class AgregarProducto extends React.Component {
     */
 manejarCambio(evento) {
    
-   console.log ('quien me llamo: '+evento.target.id);
-   console.log ('que valor tiene quien me llamo: '+evento.target.value);
+   
     // Extraer la clave del estado que se va a actualizar, así como el valor
     const clave = evento.target.id;
     let valor = evento.target.value;
@@ -118,6 +124,7 @@ async manejarEnvioDeFormulario(evento) {
                 "precio": "",
                 "descripcion": "",
                 "stock":"",
+                "iva":"",
             }
         });
     } else {
