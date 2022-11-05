@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import Nav from "./Nav";
 import './App.css';
 import { NavLink} from "react-router-dom";
 import AgregarProducto from './AgregarProducto';
@@ -11,17 +12,9 @@ import { Fragment } from 'react';
 function App() {
     
   return (
-  <Fragment>
-    <div id="menuSuperior">
-         <table border="1">
-            <tr>
-               <td> <NavLink  activeClassName="is-active" className="navbar-item" to="/productos/agregar">Agregar Producto</NavLink></td>
-               <td><NavLink  activeClassName="is-active" className="navbar-item" to="/productos/listar">Listar Producto</NavLink></td>
-            </tr>
-         </table>
-
-    </div>
-   
+  
+<div> 
+    <Nav></Nav>
     <div className="section">
       <div className="columns">
          
@@ -41,8 +34,8 @@ function App() {
 
 
     </div>
-
-    </Fragment> 
+ </div>
+   
   );
 }
 
