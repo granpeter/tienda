@@ -72,7 +72,7 @@ class AgregarProducto extends React.Component {
  
 }    
 
-  /* actualizar el estado del componente clase llamado AgregarVideoJuego
+  /* actualizar el estado del componente clase llamado AgregarProducto
        que viene definido por los atributos del objeto producto que en su orden son:
     */
 manejarCambio(evento) {

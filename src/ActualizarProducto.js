@@ -2,7 +2,10 @@ import React from 'react';
 import Constantes from "./Constantes";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link, withRouter } from 'react-router-dom';
+import { Link,  withRouter } from 'react-router-dom';
+import ListarProductos from './ListarProductos';
+
+
 
 class ActualizarProducto extends React.Component {
    
@@ -101,7 +104,7 @@ manejarCambio(evento) {
         if (clave !== "nombre"  && clave!=="descripcion") {
             valor = parseFloat(valor);
         }
-        // Actualizamos el valor del videojuego, solo en el campo que se haya cambiado
+        // Actualizamos el valor del producto, solo en el campo que se haya cambiado
         productoActualizado[clave] = valor;
         
         return {
@@ -109,7 +112,7 @@ manejarCambio(evento) {
         }
     });
     
-    
+   
 
 }
 
@@ -130,20 +133,15 @@ async manejarEnvioDeFormulario(evento) {
         }
     });
     const exitoso = await respuesta.json();
+     
     if (exitoso) {
-        // reinicialiceme el estado del objeto producto
-        this.setState({
-            producto: {
-                "nombre": "",
-                "precio": "",
-                "descripcion": "",
-                "stock":"",
-                "iva":"",
-            }
-        });
+        console.log("entro a exitos");
+        this.props.history.push("/productos/listar"); // redirecciones a rutas guardadas en mi historico
     } else {
         alert("Error guardando. Intenta de nuevo");
     }
+    
+    
 }
 
 

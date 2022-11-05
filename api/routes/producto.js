@@ -30,3 +30,29 @@ router.get('/:id', async function (req, res) {
 });
 
 module.exports = router;
+
+// función que se encargue de actualizar producto
+router.put('/',async function (req, res) {
+    await ProductoModelo.findByIdAndUpdate ({
+         _id:req.body._id,
+    } , {
+         nombre: req.body.nombre,
+         precio: req.body.precio,
+         descripcion: req.body.descripcion,
+         stock :req.body.stock,
+         iva:req.body.iva
+
+        }
+    );
+    res.send(true);
+   });
+
+
+   // definir mi función para eliminar el producto
+   router.delete('/:id', async function (req, res) {
+     await ProductoModelo.findByIdAndDelete({ _id: req.params.id })
+     res.send(true)
+    
+   })
+  
+
