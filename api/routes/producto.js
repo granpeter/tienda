@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
 var ProductoModelo = require("../modelos/modeloTienda");// importando el modelo Mongo a Express
 
@@ -18,8 +19,15 @@ router.post('/', async function (req, res, next) {
 
 // funcion que atiende peticiones get  en el mapeo /productos
 router.get('/', async function (req, res, next) {
-   const productos= await ProductoModelo.find(); // metodo para listar todos los productos
+   const productos= await ProductoModelo.find({stock:{$gt:0}}); // metodo para listar todos los productos
+  
    res.send(productos);
+
+});
+
+router.get('/prodexiste',async function (req, res, next){
+const productos= await  ProductoModelo.find({stock:{$gt:0}});  //greather than mayor o que
+res.send(productos);         
 
 });
 
@@ -45,6 +53,7 @@ router.put('/',async function (req, res) {
         }
     );
     res.send(true);
+    
    });
 
 

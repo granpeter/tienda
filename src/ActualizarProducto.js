@@ -132,11 +132,14 @@ async manejarEnvioDeFormulario(evento) {
             "Content-Type":"application/json",
         }
     });
+   
+    
     const exitoso = await respuesta.json();
-     
+   
     if (exitoso) {
         console.log("entro a exitos");
-        this.props.history.push("/productos/listar"); // redirecciones a rutas guardadas en mi historico
+        // redirecciones a rutas guardadas en mi historico
+        
     } else {
         alert("Error guardando. Intenta de nuevo");
     }

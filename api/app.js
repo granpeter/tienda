@@ -2,7 +2,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const mongoose=require("mongoose");
+const bodyParser=require("body-parser");
+const passport=require("passport");
 
 /*
 var indexRouter = require('./routes/index');
@@ -10,9 +12,33 @@ var usersRouter = require('./routes/users');
 */
 // configurar la ruta de microservicios que atendera las peticiones sobre producto
 var enrutadorProducto = require ('./routes/producto')
+// configurar el enrutador que atendera las peticiones de autenticación y registro de usuarios
+var users=require ("./routes/users");
 
 
-var app = express();
+
+var app = express(); // inicializa la aplicación express
+
+
+// 5. aplicamos función middleware para codificar en formato json la peticiones de autenticación y registro de usuarios
+app.use(
+    bodyParser.urlencoded({
+      extended:false
+    })
+);
+app.use (bodyParser.json ());
+
+// 5. configurar la conexión a la base datos mongo para autenticar y registrar usuarios
+// DB Config
+const db= require("./config/keys").mongoURI;
+// Connect to MongoDB
+mongoose.connect(
+  db,
+   { useNewUrlParser:true}
+ )
+.then(() =>console.log("La conexión a MongoDB fue exitosa"))
+.catch(err=>console.log(err));
+
 
 
 
