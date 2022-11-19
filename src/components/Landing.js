@@ -16,7 +16,7 @@ class Landing extends Component {
                     </h4>
 
                     <p className="flow-text grey-text text-darken-1">
-                     Create a MINIMO full-stack app con autenticacion usuario via
+                     Create a MINIMA full-stack app con autenticacion usuario via
                      passport and JWTs
                      </p>
                     <br/>

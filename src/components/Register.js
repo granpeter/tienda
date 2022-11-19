@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {Link,withRouter} from "react-router-dom";
+import {Link , withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect}  from "react-redux";
 import  {registerUser} from "../actions/authActions";
@@ -31,6 +31,7 @@ class Register extends Component {
             password2:this.state.password2
             };
             console.log(newUser);
+          
         };
     
 
@@ -49,7 +50,7 @@ class Register extends Component {
 
                    <div className="cols12"style={{paddingLeft:"11.250px"}}>
                        <h4>
-                          <b>Register</b>below
+                          <b>Registrese</b>  Adelante
                         </h4>
                       <p className="grey-texttext-darken-1">
                          ya tiene una cuenta?<Link to="/login">Login</Link>
@@ -57,7 +58,7 @@ class Register extends Component {
 
                     </div>
 
-                    <form noValidateonSubmit={this.onSubmit}>
+                    <form noValidate onSubmit={this.onSubmit}>
                         <div className="input-fieldcols12">
                           <input
                            onChange={this.onChange}
@@ -125,10 +126,6 @@ class Register extends Component {
     
     }// fin de render
 
-    
-
-
-
 }// fin de clase Register
 
 Register.propTypes= {
@@ -141,9 +138,10 @@ const mapStateToProps=( state )=>({
     auth:state.auth,
     errors:state.errors
   });
-  
-export default connect(
-    mapStateToProps,
-   { registerUser }
-   )( withRouter(Register));
+
+
+export default connect( mapStateToProps,{ registerUser })(withRouter(Register));
+
+
+
 

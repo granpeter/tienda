@@ -1,12 +1,13 @@
 import axios from "axios";
-import setAuthToken from"../utils/setAuthToken";
+import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import{ GET_ERRORS, SET_CURRENT_USER, USER_LOADING} from"./types";
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING} from "./types";
 
 
 export const registerUser= (userData, history) =>(dispatch) =>{
+    console.log ("entro a la función registerUser ")
     axios
-    .post("./routes/users", userData)
+    .post("/users/register", userData) //especificar la ruta en la api backend va atender la petición de registro
     .then((res) =>history.push("/login")) // re-direct to login on successful register
     .catch((err) =>
     dispatch({
@@ -21,7 +22,7 @@ export const registerUser= (userData, history) =>(dispatch) =>{
 // Login -get user token
 export const loginUser= (userData) =>(dispatch) =>{
     axios
-    .post("/api/users/login", userData)
+    .post("/users/login", userData) //especificar la ruta en la api backend va atender la petición
     .then((res) =>{
     // Save to localStorage
     // Set token to localStorage

@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import{ setCurrentUser, logoutUser} from "./actions/authActions";
 import { NavLink} from "react-router-dom";
-
 import NavBar from  "./Navbar";
 import AgregarProducto from './AgregarProducto';
 import ListarProductos from './ListarProductos';
@@ -45,16 +44,16 @@ class App extends Component {
    return (
   
 <div> 
- 
+    <NavBar/>
     <Route exactpath="/" component={Landing}/>
     <Route exactpath="/register" component={Register}/>
-    <Route exactpath="/login" component={Login}/>
+
 
     <div className="section">
       <div className="columns">
          
           <Switch>
-          
+        
            <PrivateRoute path="/productos/agregar">
                <AgregarProducto></AgregarProducto> 
             </PrivateRoute >         

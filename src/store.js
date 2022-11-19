@@ -1,10 +1,23 @@
 import { createStore, applyMiddleware, compose} from "redux";
+import {configureStore} from '@reduxjs/toolkit'
+
+import {combineReducers} from "redux";
+import authReducer from "./reducers/authReducer";
+import errorReducer from "./reducers/errorReducer";
+
 import thunk from "redux-thunk";
-import rootReducer from "./reducers";
+
+
+let reducers = combineReducers({
+      auth:authReducer,
+      errors:errorReducer
+ })
+
+
 const initialState= {};
 const middleware= [thunk];
-const store= createStore(
-      rootReducer,
+const store= configureStore(
+      {reducer:reducers},
       initialState,
       compose(
       applyMiddleware(...middleware),
