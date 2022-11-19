@@ -127,4 +127,4 @@ router.post ("/register", (req, res)  => {
 
 });// fin de función  de Registro
 
-
+module.exports = router;

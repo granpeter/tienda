@@ -1,35 +1,32 @@
-import { SET_CURRENT_USER, USER_LOADING } from"../actions/types";
+import{
+    SET_CURRENT_USER,
+    USER_LOADING
+    } from"../actions/types";
+    const isEmpty= require("is-empty");
 
+    const initialState={
+        isAuthenticated:false,
+        user:{},
+        loading:false
+    };
 
- const isEmpty= require("is-empty");
-
-  const initialState={
-    isAuthenticated:false,
-    user:{},
-    loading:false
-   }; 
-   
-// eslint-disable-next-line import/no-anonymous-default-export
-export default function (state = initialState, action) {
-    
+   /* eslint import/no-anonymous-default-export: [2, {"allowAnonymousFunction": true}] */
+   export default function (state= initialState, action) {
+       
     switch(action.type) {
-         case   SET_CURRENT_USER: // maneja n los registro de usuarios
-         return{
-            ...state,
-            isAuthenticated:!isEmpty(action.payload),
-               user:action.payload
-            };
-    
-         case USER_LOADING: // maneja los login o autenticaciones
-          return{
-            ...state,
-            loading:true
+          case SET_CURRENT_USER:
+           return{
+             ...state,
+             isAuthenticated:!isEmpty(action.payload),
+             user:action.payload
            };
-      
-          default: 
-             return state;
-    }
-
-} // cierre de función 
-
-
+        case USER_LOADING:
+          return{
+           ...state,
+           loading:true
+          };
+          default:
+          return state;
+        }
+}
+    

@@ -37,7 +37,7 @@ router.get('/:id', async function (req, res) {
   res.send(producto);
 });
 
-module.exports = router;
+
 
 // función que se encargue de actualizar producto
 router.put('/',async function (req, res) {
@@ -64,4 +64,4 @@ router.put('/',async function (req, res) {
     
    })
   
-
+   module.exports = router;
