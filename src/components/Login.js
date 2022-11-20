@@ -1,5 +1,8 @@
 import React, {Component} from "react";
-import {Link}  from "react-router-dom";
+import {Link , withRouter} from "react-router-dom";
+import PropTypes from "prop-types";
+import {loginUser} from "../actions/authActions";
+import { connect}  from "react-redux";
 
 class Login extends Component{
     constructor(){
@@ -22,9 +25,17 @@ class Login extends Component{
             password:this.state.password
         };
         console.log(userData);
+        this.props.loginUser(userData);
         };
        
        
+        componentDidMount() {
+         if (this.props.auth.isAuthenticated) {
+           this.props.history.push('http://localhost:5000/producto');
+         }
+       }
+
+
        render(){
             const{ errors} = this.state;
             return (
@@ -99,4 +110,15 @@ class Login extends Component{
 
 
 }// fin de clase Login
-export default Login;
+Login.propTypes = {
+   loginUser:PropTypes.func.isRequired,
+   auth:PropTypes.object.isRequired,
+   errors:PropTypes.object.isRequired,
+};
+
+const mapStateToProps=( state )=>({
+   auth:state.auth,
+   errors:state.errors
+ });
+
+export default connect( mapStateToProps,{ loginUser }) (withRouter (Login) );

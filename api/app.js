@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 // configurar la ruta de microservicios que atendera las peticiones sobre producto
 var enrutadorProducto = require ('./routes/producto')
 // configurar el enrutador que atendera las peticiones de autenticación y registro de usuarios
-var users = require ("./routes/users");
+var enrutadorusers = require ('./routes/users');
 
 
 
@@ -69,7 +69,7 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 //Routes
 
-app.use("/users",users);
+app.use("/users",enrutadorusers);
 app.use('/producto',enrutadorProducto); // la app del backend use el enrutador PRoducto
 
 module.exports = app;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import{ BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import{ BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import{ setCurrentUser, logoutUser} from "./actions/authActions";
@@ -46,14 +46,14 @@ class App extends Component {
 <div> 
     <NavBar/>
     <Route exactpath="/" component={Landing}/>
-    <Route exactpath="/register" component={Register}/>
+    <Route  exactpath="/register" component={Register}/>
 
 
     <div className="section">
       <div className="columns">
          
           <Switch>
-        
+          <Route exactpath="/login" component={Login}/>
            <PrivateRoute path="/productos/agregar">
                <AgregarProducto></AgregarProducto> 
             </PrivateRoute >         

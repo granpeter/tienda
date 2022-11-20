@@ -88,7 +88,7 @@ router.post ( "/login", (req,res)  => {
 // atender petición post para el registro de usuarios
 
 // @route  POST api/users/register
-router.post ("/register", (req, res)  => {
+router.post ('/register', (req, res)  => {
  
       // Validación de Form ulario
       const{ errors, isValid} = validateRegisterInput(req.body);
@@ -98,7 +98,7 @@ router.post ("/register", (req, res)  => {
         }
  
         UserModel.findOne ({ email:req.body.email}).then ( user => {
-           if (!user){
+           if (user){
              return res.status(404).json ({email:"ya existe un usuario registrado con ese email"}); 
            } else {
                const newUser = new UserModel ({
